@@ -58,7 +58,7 @@ public class TagOutputStream extends FilterOutputStream
 
     public TagOutputStream(OutputStream out, boolean compressed) throws IOException
     {
-        super(compressed ? new GZIPOutputStream(new DataOutputStream(out)) : new DataOutputStream(out));
+        super(compressed ? new DataOutputStream(new GZIPOutputStream(out)) : new DataOutputStream(out));
         this.stream = (DataOutputStream) this.out; // use FilterOutputStream's out, not this from constructor
     }
 
