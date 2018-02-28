@@ -16,7 +16,7 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-package pl.mcpg.nbt;
+package io.github.mcpg.nbt;
 
 import java.io.DataInputStream;
 import java.io.IOException;

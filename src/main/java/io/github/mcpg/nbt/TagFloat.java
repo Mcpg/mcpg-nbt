@@ -15,7 +15,35 @@
  * DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
-/**
- * This package contains every class related to mcpg-nbt library.
- */
-package pl.mcpg.nbt;
+
+package io.github.mcpg.nbt;
+
+import java.io.DataInputStream;
+import java.io.DataOutputStream;
+import java.io.IOException;
+
+public class TagFloat extends Tag<Float>
+{
+    public TagFloat(String name, float value)
+    {
+        super(name, value, TagType.TAG_FLOAT);
+    }
+
+    public TagFloat(String name)
+    {
+        super(name);
+        this.type = TagType.TAG_FLOAT;
+    }
+
+    @Override
+    public void writeTagPayload(DataOutputStream outputStream) throws IOException
+    {
+        outputStream.writeFloat(value);
+    }
+
+    @Override
+    public void readTagPayload(DataInputStream inputStream) throws IOException
+    {
+        value = inputStream.readFloat();
+    }
+}

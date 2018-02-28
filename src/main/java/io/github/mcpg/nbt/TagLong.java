@@ -16,34 +16,34 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-package pl.mcpg.nbt;
+package io.github.mcpg.nbt;
 
 import java.io.DataInputStream;
 import java.io.DataOutputStream;
 import java.io.IOException;
 
-public class TagInt extends Tag<Integer>
+public class TagLong extends Tag<Long>
 {
-    public TagInt(String name, int value)
+    public TagLong(String name, long value)
     {
-        super(name, value, TagType.TAG_INT);
+        super(name, value, TagType.TAG_LONG);
     }
 
-    public TagInt(String name)
+    public TagLong(String name)
     {
         super(name);
-        this.type = TagType.TAG_INT;
+        this.type = TagType.TAG_LONG;
     }
 
     @Override
     public void writeTagPayload(DataOutputStream outputStream) throws IOException
     {
-        outputStream.writeInt(value);
+        outputStream.writeLong(value);
     }
 
     @Override
     public void readTagPayload(DataInputStream inputStream) throws IOException
     {
-        value = inputStream.readInt();
+        value = inputStream.readLong();
     }
 }

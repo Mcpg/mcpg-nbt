@@ -16,12 +16,13 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-package pl.mcpg.nbt.test;
+package io.github.mcpg.nbt.test;
 
+import io.github.mcpg.nbt.*;
 import org.junit.Assert;
 import org.junit.Test;
 import pl.mcpg.nbt.*;
-import pl.mcpg.nbt.TagCompound.CompoundContent;
+import io.github.mcpg.nbt.TagCompound.CompoundContent;
 
 import java.io.*;
 import java.util.ArrayList;

@@ -16,39 +16,34 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-package pl.mcpg.nbt;
+package io.github.mcpg.nbt;
 
 import java.io.DataInputStream;
 import java.io.DataOutputStream;
 import java.io.IOException;
-import java.nio.charset.StandardCharsets;
 
-public class TagString extends Tag<String>
+public class TagInt extends Tag<Integer>
 {
-    public TagString(String name, String value)
+    public TagInt(String name, int value)
     {
-        super(name, value, TagType.TAG_STRING);
+        super(name, value, TagType.TAG_INT);
     }
 
-    public TagString(String name)
+    public TagInt(String name)
     {
         super(name);
-        this.type = TagType.TAG_STRING;
+        this.type = TagType.TAG_INT;
     }
 
     @Override
     public void writeTagPayload(DataOutputStream outputStream) throws IOException
     {
-        byte[] rawString = value.getBytes(StandardCharsets.UTF_8);
-        outputStream.writeShort(rawString.length);
-        outputStream.write(rawString);
+        outputStream.writeInt(value);
     }
 
     @Override
     public void readTagPayload(DataInputStream inputStream) throws IOException
     {
-        byte[] rawString = new byte[inputStream.readShort()];
-        inputStream.readFully(rawString);
-        value = new String(rawString, StandardCharsets.UTF_8);
+        value = inputStream.readInt();
     }
 }
