@@ -21,7 +21,6 @@ package io.github.mcpg.nbt.test;
 import io.github.mcpg.nbt.*;
 import org.junit.Assert;
 import org.junit.Test;
-import pl.mcpg.nbt.*;
 import io.github.mcpg.nbt.TagCompound.CompoundContent;
 
 import java.io.*;
