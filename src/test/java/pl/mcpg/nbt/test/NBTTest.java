@@ -18,31 +18,14 @@
 
 package pl.mcpg.nbt.test;
 
-import java.io.ByteArrayInputStream;
-import java.io.ByteArrayOutputStream;
-import java.io.DataInputStream;
-import java.io.DataOutputStream;
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
-
 import org.junit.Assert;
 import org.junit.Test;
-import pl.mcpg.nbt.Tag;
-import pl.mcpg.nbt.TagByte;
-import pl.mcpg.nbt.TagByteArray;
-import pl.mcpg.nbt.TagCompound;
+import pl.mcpg.nbt.*;
 import pl.mcpg.nbt.TagCompound.CompoundContent;
-import pl.mcpg.nbt.TagDouble;
-import pl.mcpg.nbt.TagFloat;
-import pl.mcpg.nbt.TagInt;
-import pl.mcpg.nbt.TagIntArray;
-import pl.mcpg.nbt.TagList;
-import pl.mcpg.nbt.TagLong;
-import pl.mcpg.nbt.TagReadingUtils;
-import pl.mcpg.nbt.TagShort;
-import pl.mcpg.nbt.TagString;
-import pl.mcpg.nbt.TagType;
+
+import java.io.*;
+import java.util.ArrayList;
+import java.util.List;
 
 public class NBTTest
 {
@@ -72,6 +55,13 @@ public class NBTTest
             tagList.getValue().add(new TagByte("", (byte) i));
         }
         TagLong tagLong = new TagLong("long", Long.MAX_VALUE - 10);
+
+        TagLongArray tagLongArray = new TagLongArray("longArray", new long[20]);
+
+        for (int i = 0; i < tagLongArray.getValue().length; i++) {
+            tagLongArray.getValue()[i] = Long.MAX_VALUE - (i * 30);
+        }
+
         root.getValue().addTag(tagByte);
         root.getValue().addTag(tagShort);
         root.getValue().addTag(tagInt);
@@ -82,6 +72,7 @@ public class NBTTest
         root.getValue().addTag(tagString);
         root.getValue().addTag(tagList);
         root.getValue().addTag(tagLong);
+        root.getValue().addTag(tagLongArray);
         ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
         root.writeTag(new DataOutputStream(byteArrayOutputStream));
         byte[] output = byteArrayOutputStream.toByteArray();
@@ -162,5 +153,14 @@ public class NBTTest
         Assert.assertEquals(actual.getName(), tagLong.getName());
         Assert.assertEquals(actual.getType(), TagType.TAG_LONG);
         Assert.assertEquals(actual.getValue(), tagLong.getValue());
+        actual = tags.get(10);
+        Assert.assertNotNull(actual);
+        Assert.assertEquals(actual.getName(), tagLongArray.getName());
+        Assert.assertEquals(actual.getType(), TagType.TAG_LONG_ARRAY);
+        long[] loadedLongs = (long[]) actual.getValue();
+        Assert.assertEquals(loadedLongs.length, 20);
+        for (int i = 0; i < tagLongArray.getValue().length; i++) {
+            Assert.assertEquals(loadedLongs[i], Long.MAX_VALUE - (i * 30));
+        }
     }
 }

@@ -20,18 +20,19 @@ package pl.mcpg.nbt;
 
 public enum TagType
 {
-    TAG_END("TAG_End", 0x0, TagEnd.class),
-    TAG_BYTE("TAG_Byte", 0x1, TagByte.class),
-    TAG_SHORT("TAG_Short", 0x2, TagShort.class),
-    TAG_INT("TAG_Int", 0x3, TagInt.class),
-    TAG_LONG("TAG_Long", 0x4, TagLong.class),
-    TAG_FLOAT("TAG_Float", 0x5, TagFloat.class),
-    TAG_DOUBLE("TAG_Double", 0x6, TagDouble.class),
-    TAG_BYTE_ARRAY("TAG_Byte_Array", 0x7, TagByteArray.class),
-    TAG_STRING("TAG_String", 0x8, TagString.class),
-    TAG_LIST("TAG_List", 0x9, TagList.class),
-    TAG_COMPOUND("TAG_Compound", 0xA, TagCompound.class),
-    TAG_INT_ARRAY("TAG_Int_Array", 0xB, TagIntArray.class);
+    TAG_END("TAG_End", 0, TagEnd.class),
+    TAG_BYTE("TAG_Byte", 1, TagByte.class),
+    TAG_SHORT("TAG_Short", 2, TagShort.class),
+    TAG_INT("TAG_Int", 3, TagInt.class),
+    TAG_LONG("TAG_Long", 4, TagLong.class),
+    TAG_FLOAT("TAG_Float", 5, TagFloat.class),
+    TAG_DOUBLE("TAG_Double", 6, TagDouble.class),
+    TAG_BYTE_ARRAY("TAG_Byte_Array", 7, TagByteArray.class),
+    TAG_STRING("TAG_String", 8, TagString.class),
+    TAG_LIST("TAG_List", 9, TagList.class),
+    TAG_COMPOUND("TAG_Compound", 10, TagCompound.class),
+    TAG_INT_ARRAY("TAG_Int_Array", 11, TagIntArray.class),
+    TAG_LONG_ARRAY("TAG_Long_Array", 12, TagLongArray.class);
 
     private final String name;
     private final int id;
