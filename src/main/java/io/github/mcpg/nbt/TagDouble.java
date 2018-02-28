@@ -24,11 +24,20 @@ import java.io.IOException;
 
 public class TagDouble extends Tag<Double>
 {
+    /**
+     * Creates new instance of TagDouble class.
+     * @param name tag's name
+     * @param value tag's value
+     */
     public TagDouble(String name, double value)
     {
         super(name, value, TagType.TAG_DOUBLE);
     }
 
+    /**
+     * Creates new instance of TagByte class without setting new value.
+     * @param name tag's name
+     */
     public TagDouble(String name)
     {
         super(name);

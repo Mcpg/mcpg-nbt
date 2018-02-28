@@ -30,6 +30,16 @@ public final class TagReadingUtils
     {
     }
 
+    /**
+     * Reads new tag from given {@link java.io.DataInputStream}.
+     * @param inputStream input stream to use
+     * @return readied tag
+     * @throws IOException if any I/O error occurs
+     * @throws IllegalStateException if detected tag isn't registered
+     * @throws NullPointerException if type's enum has got null as <code>clazz</code> field
+     * @throws IllegalStateException if tag couldn't be instantiated
+     * @throws IllegalStateException if created object isn't instanceof <code>Tag</code>
+     */
     public static Tag<?> readTag(DataInputStream inputStream) throws IOException
     {
         int id = inputStream.readUnsignedByte();
@@ -42,7 +52,7 @@ public final class TagReadingUtils
         inputStream.readFully(rawName);
         if (type.getClazz() == null)
         {
-            throw new IllegalStateException("Type " + type + " has got null clazz!");
+            throw new NullPointerException("Type " + type + " has got null clazz!");
         }
         Object obj;
         try

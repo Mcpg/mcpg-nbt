@@ -22,29 +22,46 @@ import java.io.DataInputStream;
 import java.io.DataOutputStream;
 import java.io.IOException;
 
-public class TagLongArray extends Tag<long[]> {
-    public TagLongArray(String name) {
+public class TagLongArray extends Tag<long[]>
+{
+    /**
+     * Creates new instance of TagLongArray class.
+     * @param name tag's name
+     * @param value tag's value
+     */
+    public TagLongArray(String name, long[] value)
+    {
+        super(name, value, TagType.TAG_LONG_ARRAY);
+    }
+
+    /**
+     * Creates new instance of TagLongArray class without setting new value.
+     * @param name tag's name
+     */
+    public TagLongArray(String name)
+    {
         super(name);
 
         this.type = TagType.TAG_LONG_ARRAY;
     }
 
-    public TagLongArray(String name, long[] value) {
-        super(name, value, TagType.TAG_LONG_ARRAY);
-    }
 
     @Override
-    public void writeTagPayload(DataOutputStream outputStream) throws IOException {
+    public void writeTagPayload(DataOutputStream outputStream) throws IOException
+    {
         outputStream.writeInt(value.length);
-        for (long aValue : value) {
+        for (long aValue : value)
+        {
             outputStream.writeLong(aValue);
         }
     }
 
     @Override
-    public void readTagPayload(DataInputStream inputStream) throws IOException {
+    public void readTagPayload(DataInputStream inputStream) throws IOException
+    {
         value = new long[inputStream.readInt()];
-        for (int i = 0; i < value.length; i++) {
+        for (int i = 0; i < value.length; i++)
+        {
             value[i] = inputStream.readLong();
         }
     }

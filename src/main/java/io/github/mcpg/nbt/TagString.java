@@ -25,11 +25,20 @@ import java.nio.charset.StandardCharsets;
 
 public class TagString extends Tag<String>
 {
+    /**
+     * Creates new instance of TagString class.
+     * @param name tag's name
+     * @param value tag's value
+     */
     public TagString(String name, String value)
     {
         super(name, value, TagType.TAG_STRING);
     }
 
+    /**
+     * Creates new instance of TagString class without setting new value.
+     * @param name tag's name
+     */
     public TagString(String name)
     {
         super(name);

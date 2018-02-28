@@ -24,11 +24,20 @@ import java.io.IOException;
 
 public class TagLong extends Tag<Long>
 {
+    /**
+     * Creates new instance of TagLong class.
+     * @param name tag's name
+     * @param value tag's value
+     */
     public TagLong(String name, long value)
     {
         super(name, value, TagType.TAG_LONG);
     }
 
+    /**
+     * Creates new instance of TagLong class without setting new value.
+     * @param name tag's name
+     */
     public TagLong(String name)
     {
         super(name);

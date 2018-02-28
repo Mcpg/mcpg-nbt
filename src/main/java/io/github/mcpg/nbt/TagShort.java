@@ -24,11 +24,20 @@ import java.io.IOException;
 
 public class TagShort extends Tag<Short>
 {
+    /**
+     * Creates new instance of TagShort class.
+     * @param name tag's name
+     * @param value tag's value
+     */
     public TagShort(String name, short value)
     {
         super(name, value, TagType.TAG_SHORT);
     }
 
+    /**
+     * Creates new instance of TagShort class without setting new value.
+     * @param name tag's name
+     */
     public TagShort(String name)
     {
         super(name);

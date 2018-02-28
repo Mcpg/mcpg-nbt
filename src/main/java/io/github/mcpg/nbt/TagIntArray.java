@@ -24,11 +24,20 @@ import java.io.IOException;
 
 public class TagIntArray extends Tag<int[]>
 {
+    /**
+     * Creates new instance of TagIntArray class.
+     * @param name tag's name
+     * @param value tag's value
+     */
     public TagIntArray(String name, int[] value)
     {
         super(name, value, TagType.TAG_INT_ARRAY);
     }
 
+    /**
+     * Creates new instance of TagIntArray class without setting new value.
+     * @param name tag's name
+     */
     public TagIntArray(String name)
     {
         super(name);

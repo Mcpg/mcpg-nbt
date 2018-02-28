@@ -30,12 +30,21 @@ public class TagList extends Tag<List<Tag<?>>>
 {
     private TagType listType;
 
+    /**
+     * Creates new instance of TagList class.
+     * @param name tag's name
+     * @param value tag's value
+     */
     public TagList(String name, List<Tag<?>> value, TagType listType)
     {
         super(name, value, TagType.TAG_LIST);
         this.listType = listType;
     }
 
+    /**
+     * Creates new instance of TagList class without setting new value.
+     * @param name tag's name
+     */
     public TagList(String name)
     {
         super(name);

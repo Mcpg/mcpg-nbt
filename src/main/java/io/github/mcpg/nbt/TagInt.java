@@ -24,11 +24,20 @@ import java.io.IOException;
 
 public class TagInt extends Tag<Integer>
 {
+    /**
+     * Creates new instance of TagInt class.
+     * @param name tag's name
+     * @param value tag's value
+     */
     public TagInt(String name, int value)
     {
         super(name, value, TagType.TAG_INT);
     }
 
+    /**
+     * Creates new instance of TagInt class without setting new value.
+     * @param name tag's name
+     */
     public TagInt(String name)
     {
         super(name);

@@ -24,11 +24,20 @@ import java.io.IOException;
 
 public class TagEnd extends Tag<Object>
 {
+    /**
+     * Creates new instance of TagEnd class.
+     */
     public TagEnd()
     {
         super(null, null, TagType.TAG_END);
     }
 
+    /**
+     * Creates new instance of TagByte class with name. Note, that TAG_End's name
+     * isn't saved into output stream (only its id is written), so use {@link TagEnd()}
+     * instead. This constructor is provided for tag reading functionality.
+     * @param name tag's name
+     */
     public TagEnd(String name)
     {
         super(name);

@@ -24,17 +24,30 @@ import java.io.IOException;
 
 public class TagByte extends Tag<Byte>
 {
+    /**
+     * Creates new instance of TagByte class.
+     * @param name tag's name
+     * @param value tag's value
+     */
     public TagByte(String name, byte value)
     {
         super(name, value, TagType.TAG_BYTE);
     }
 
+    /**
+     * Creates new instance of TagByte class without new value.
+     * @param name tag's name
+     */
     public TagByte(String name)
     {
         super(name);
         this.type = TagType.TAG_BYTE;
     }
 
+    /**
+     * Returns boolean value of the payload
+     * @return <code>true</code> if not 0, <code>false</code> otherwise
+     */
     public boolean getBooleanValue()
     {
         return value != 0;

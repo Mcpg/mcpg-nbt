@@ -31,11 +31,20 @@ import io.github.mcpg.nbt.TagCompound.CompoundContent;
 
 public class TagCompound extends Tag<CompoundContent>
 {
+    /**
+     * Creates new instance of TagCompound class.
+     * @param name tag's name
+     * @param value tag's value
+     */
     public TagCompound(String name, CompoundContent value)
     {
         super(name, value, TagType.TAG_COMPOUND);
     }
 
+    /**
+     * Creates new instance of TagByte class without setting value.
+     * @param name tag's name
+     */
     public TagCompound(String name)
     {
         super(name);
@@ -106,18 +115,36 @@ public class TagCompound extends Tag<CompoundContent>
     {
         private List<Tag<?>> tags;
 
+        /**
+         * Creates new CompoundComponent instance.
+         */
         public CompoundContent()
         {
             this.tags = new ArrayList<>();
         }
 
+        /**
+         * Returns tags list for this compound. For getting values see {@link #getTag(String)},
+         * and other methods in this class
+         * @return tags list
+         */
         public List<Tag<?>> getTagsList()
         {
             return tags;
         }
 
+        /**
+         * Gets tag from the compound content. If none found, null is returned
+         * @param name tag's name
+         * @return tag from compound content, or null if not found
+         * @throws NullPointerException if name is null
+         */
         public Tag<?> getTag(String name)
         {
+            if (name == null)
+            {
+                throw new NullPointerException("name is null");
+            }
             for (Tag<?> tag : tags)
             {
                 if (tag.getName().equals(name))
@@ -128,8 +155,18 @@ public class TagCompound extends Tag<CompoundContent>
             return null;
         }
 
+        /**
+         * Checks if given tag exists in this compound content.
+         * @param name tag's name
+         * @return <code>true</code> if found, <code>false</code> otherwise.
+         * @throws NullPointerException if name is null
+         */
         public boolean containsTag(String name)
         {
+            if (name == null)
+            {
+                throw new NullPointerException("name is null");
+            }
             for (Tag<?> tag : tags)
             {
                 if (tag.getName().equals(name))
@@ -140,8 +177,19 @@ public class TagCompound extends Tag<CompoundContent>
             return false;
         }
 
+        /**
+         * Adds new tag into this compound content.
+         * @param tag tag to add.
+         * @throws NullPointerException if tag is null
+         * @throws IllegalArgumentException if tag's type is TAG_End
+         * @throws IllegalArgumentException if tag with this name is already in the compound content
+         */
         public void addTag(Tag<?> tag)
         {
+            if (tag == null)
+            {
+                throw new NullPointerException("tag is null");
+            }
             if (tag.getType().equals(TagType.TAG_END))
             {
                 throw new IllegalArgumentException("Can't push TAG_End into TAG_Compound!");

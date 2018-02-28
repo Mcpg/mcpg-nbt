@@ -24,11 +24,20 @@ import java.io.IOException;
 
 public class TagFloat extends Tag<Float>
 {
+    /**
+     * Creates new instance of TagFloat class.
+     * @param name tag's name
+     * @param value tag's value
+     */
     public TagFloat(String name, float value)
     {
         super(name, value, TagType.TAG_FLOAT);
     }
 
+    /**
+     * Creates new instance of TagFloat class without setting new value.
+     * @param name tag's name
+     */
     public TagFloat(String name)
     {
         super(name);

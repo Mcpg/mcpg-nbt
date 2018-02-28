@@ -24,11 +24,20 @@ import java.io.IOException;
 
 public class TagByteArray extends Tag<byte[]>
 {
+    /**
+     * Creates new instance of TagByteArray class.
+     * @param name tag's name
+     * @param value tag's value
+     */
     public TagByteArray(String name, byte[] value)
     {
         super(name, value, TagType.TAG_BYTE_ARRAY);
     }
 
+    /**
+     * Creates new instance of TagByteArray class without setting value.
+     * @param name tag's name
+     */
     public TagByteArray(String name)
     {
         super(name);
